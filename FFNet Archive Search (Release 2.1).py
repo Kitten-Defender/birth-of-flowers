@@ -67,8 +67,8 @@ class FFNet:
             return story.find(class_= "stitle").getText()
         elif part == "fandom":
             info = story.find(class_= "z-padtop2 xgray").getText()  #the bit on the bottom with all the info
-            info = re.findall("[^-]+(?= -)", info) #gets item before first "-" divider
-            match = info[0]
+            info = info.split(" -")
+            match = info[0]   #gets item before first "-" divider
             if "Crossover" in match:
                 return info[1][1:]  #If crossover, returns the actual crossover fandoms
             else:
